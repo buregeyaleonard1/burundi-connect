@@ -5,6 +5,8 @@ Pi.init({
   sandbox: true
 });
 
+let currentUser = null;
+
 // LOGIN
 async function login() {
   try {
@@ -12,10 +14,11 @@ async function login() {
 
     const auth = await Pi.authenticate(scopes);
 
-    document.getElementById("user").innerText =
-      "Welcome " + auth.user.username;
+    currentUser = auth.user;
 
-    console.log(auth);
+    document.getElementById("user").innerText =
+      "Welcome " + currentUser.username;
+
   } catch (err) {
     console.error(err);
   }
@@ -23,25 +26,30 @@ async function login() {
 
 // PAYMENT
 async function pay() {
+  if (!currentUser) {
+    alert("Banza ukore login");
+    return;
+  }
+
   try {
     const paymentData = {
-      amount: 1,
-      memo: "Burundi-connect test",
-      metadata: { type: "test" }
+      amount: 0.1,
+      memo: "Test payment Burundi-connect",
+      metadata: { test: true }
     };
 
     await Pi.createPayment(paymentData, {
       onReadyForServerApproval: function(paymentId) {
-        console.log("Approve:", paymentId);
+        console.log("Ready for approval:", paymentId);
       },
       onReadyForServerCompletion: function(paymentId, txid) {
-        console.log("Complete:", paymentId, txid);
+        console.log("Ready for completion:", paymentId, txid);
       },
       onCancel: function(paymentId) {
         console.log("Cancelled:", paymentId);
       },
       onError: function(error) {
-        console.error(error);
+        console.error("Error:", error);
       }
     });
 
