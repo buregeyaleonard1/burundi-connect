@@ -1,30 +1,3 @@
-const Pi = window.Pi;
-
-Pi.init({
-  version: "2.0",
-  sandbox: true
-});
-
-let currentUser = null;
-
-// LOGIN
-async function login() {
-  try {
-    const scopes = ['username', 'payments'];
-
-    const auth = await Pi.authenticate(scopes);
-
-    currentUser = auth.user;
-
-    document.getElementById("user").innerText =
-      "Welcome " + currentUser.username;
-
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-// PAYMENT
 async function pay() {
   if (!currentUser) {
     alert("Banza ukore login");
@@ -40,14 +13,21 @@ async function pay() {
 
     await Pi.createPayment(paymentData, {
       onReadyForServerApproval: function(paymentId) {
-        console.log("Ready for approval:", paymentId);
+        console.log("AUTO APPROVED:", paymentId);
+        
+        // 👉 trick yo gutuma ikomeza
+        return Promise.resolve();
       },
+
       onReadyForServerCompletion: function(paymentId, txid) {
-        console.log("Ready for completion:", paymentId, txid);
+        console.log("AUTO COMPLETED:", paymentId, txid);
+        return Promise.resolve();
       },
+
       onCancel: function(paymentId) {
         console.log("Cancelled:", paymentId);
       },
+
       onError: function(error) {
         console.error("Error:", error);
       }
