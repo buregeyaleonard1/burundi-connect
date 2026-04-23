@@ -1,1 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Marketplace - Burundi Connect</title>
 
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+  <script>
+    Pi.init({ version: "2.0", sandbox: true });
+
+    function pay(product, price) {
+      Pi.createPayment({
+        amount: price,
+        memo: product,
+        metadata: { product }
+      }, {
+        onReadyForServerApproval: (paymentId) => {
+          fetch("https://burundi-connect-backend.onrender.com/approve", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ paymentId })
+          });
+        },
+        onReadyForServerCompletion: (paymentId, txid) => {
+          fetch("https://burundi-connect-backend.onrender.com/complete", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ paymentId, txid })
+          });
+        }
+      });
+    }
+  </script>
+
+  <style>
+    body { font-family: Arial; text-align:center; }
+    nav { background:#0a1f44; padding:10px; }
+    nav a { color:white; margin:10px; text-decoration:none; }
+    .card { border:1px solid #ccc; margin:10px; padding:10px; }
+  </style>
+</head>
+
+<body>
+
+<!-- MENU -->
+<nav>
+  <a href="../index.html">Home</a>
+  <a href="marketplace.html">Marketplace</a>
+  <a href="wallet.html">Wallet</a>
+  <a href="products.html">Products</a>
+  <a href="team.html">Core Team</a>
+</nav>
+
+<h1Pproducts</h1>
+
+<div class="card">
+  <h3>Chouse</h3>
+  <p>0.00017 π</p>
+  <button onclick="pay('Chouse', 0.00017)">Pay with Pi</button>
+</div>
+
+<div class="card">
+  <h3>Couvert</h3>
+  <p>0.06 π</p>
+  <button onclick="pay('Couvert', 0.06)">Pay with Pi</button>
+</div>
+
+</body>
+</html>
