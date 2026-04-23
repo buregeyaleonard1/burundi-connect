@@ -1,11 +1,45 @@
-<body style="font-family: Arial; text-align:center;">
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Burundi Connect</title>
+
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+
+  <script>
+    Pi.init({ version: "2.0", sandbox: true });
+
+    function login() {
+      Pi.authenticate(['username'], function(auth) {
+        localStorage.setItem("user", auth.user.username);
+        alert("Welcome " + auth.user.username);
+      });
+    }
+  </script>
+
+  <style>
+    body { font-family: Arial; text-align:center; }
+    nav { background:#0a1f44; padding:10px; }
+    nav a { color:white; margin:10px; text-decoration:none; }
+    button { padding:10px; margin:10px; }
+  </style>
+</head>
+
+<body>
+
+<!-- MENU -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="pages/marketplace.html">Marketplace</a>
+  <a href="pages/products.html">Products</a>
+  <a href="pages/wallet.html">Wallet</a>
+  <a href="pages/team.html">Core Team</a>
+</nav>
 
 <h1>Burundi Connect</h1>
+<p>Super App Pi - Marketplace, Services & Community</p>
 
-<div style="border:1px solid #ccc; padding:10px; margin:10px;">
-  <h3>Chouse</h3>
-  <p>0.00017 π</p>
-  <button onclick="pay()">Pay with Pi</button>
-</div>
+<button onclick="login()">Login with Pi</button>
 
 </body>
+</html>
