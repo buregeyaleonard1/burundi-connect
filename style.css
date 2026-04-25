@@ -1,0 +1,24 @@
+.menu-icon {
+  font-size: 30px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  background: #0a1f44;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.menu a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin: 8px 0;
+}
