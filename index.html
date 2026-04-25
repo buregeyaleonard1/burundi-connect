@@ -4,71 +4,30 @@
 <head>
   <title>Burundi Connect</title>
   <link rel="stylesheet" href="css/style.css">
-
-  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
-
-  <script>
-    Pi.init({ version: "2.0", sandbox: true });
-
-    function login() {
-      Pi.authenticate(['username'], function(auth) {
-        localStorage.setItem("user", auth.user.username);
-        alert("Welcome " + auth.user.username);
-      });
-    }
-  </script>
-
-  <style>
-    body { font-family: Arial; text-align:center; }
-    nav { background:#0a1f44; padding:10px; }
-    nav a { color:white; margin:10px; text-decoration:none; }
-    button { padding:10px; margin:10px; }
-  </style>
-  <script src="js/app.js"></script>
 </head>
-
 <body>
-  <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
-
-<div id="menu" class="menu">
-  <a href="../dashboard.html">Dashboard</a>
-  <a href="marketplace.html">Marketplace</a>
-  <a href="products.html">Products</a>
-  <a href="wallet.html">Wallet</a>
-  <a href="team.html">Core Team</a>
-  <a href="profile.html">Profile</a>
-  <a href="pages/tocken.html">Tocken</a>
-  <a href="pages/nft.html"NFT</a>
-  <a href="pages/dao.html">Dao</a>
-  <a href="pages/community.html">Community</a>
-  <a href="pages/social.html">Social Media</a>
-  <a href="pages/support.html">Support</a>
-  <a href="pages/partnership.html">Partnership</a>
+<div class="navbar">
+  <span class="menu-btn" onclick="toggleMenu()">☰</span>
+  <h3>Burundi Connect</h3>
 </div>
 
-<!-- MENU -->
-<nav>
-  <a href="dashboard.html">Dashboard</a>
+<div id="menu" class="menu">
+  <a href="index.html">Dashboard</a>
   <a href="pages/marketplace.html">Marketplace</a>
   <a href="pages/products.html">Products</a>
   <a href="pages/wallet.html">Wallet</a>
   <a href="pages/team.html">Core Team</a>
-  <a href="pages/tocken.html">Tocken</a>
-  <a href="pages/nft.html"NFT</a>
-  <a href="pages/dao.html">Dao</a>
-  <a href="pages/community.html">Community</a>
-  <a href="pages/social.html">Social Media</a>
-  <a href="pages/support.html">Support</a>
-  <a href="pages/partnership.html">Partnership</a>
-      <a href="pages/plofil.html">Plofil</a>
-</nav>
+</div>
 
-<h1>Burundi Connect</h1>
-<p>Super App Pi - Marketplace, Services & Community</p>
+<div class="container">
+  <h1>Welcome</h1>
+  <p>Super App Pi</p>
 
-<button onclick="login()">Login with Pi</button>
+  <button>Login with Pi</button>
+</div>
+
+<script src="js/app.js"></script>
 
 </body>
 </html>
-
