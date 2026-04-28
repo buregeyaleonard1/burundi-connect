@@ -1,58 +1,30 @@
-function toggleMenu() {
-  const menu = document.getElementById("menu");
-  if (menu.style.display === "block") {
-    menu.style.display = "none";
-  } else {
-    menu.style.display = "block";
+function addProduct() {
+  let name = document.getElementById("name").value;
+  let price = document.getElementById("price").value;
+
+  let img1 = document.getElementById("img1").files[0];
+
+  if (!img1) {
+    alert("Shiramwo ifoto!");
+    return;
   }
-}
-function addProduct(e) {
-  e.preventDefault();
 
-  const newProduct = {
-    seller: document.getElementById("seller").value,
-    name: document.getElementById("name").value,
-    price: document.getElementById("price").value,
-    address: document.getElementById("address").value,
-    category: document.getElementById("category").value,
-    stock: document.getElementById("stock").value,
-    images: [
-      document.getElementById("img1").value,
-      document.getElementById("img2").value,
-      document.getElementById("img3").value,
-      document.getElementById("img4").value
-    ]
+  let reader = new FileReader();
+
+  reader.onload = function(e) {
+    let product = {
+      name: name,
+      price: price,
+      image: e.target.result
+    };
+
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    products.push(product);
+
+    localStorage.setItem("products", JSON.stringify(products));
+
+    alert("Product added!");
   };
 
-  products.push(newProduct);
-
-  alert("Product added successfully ✅");
-
-  loadProducts();
-}
-function addPartner(e) {
-  e.preventDefault();
-
-  const partner = {
-    name: document.getElementById("pname").value,
-    type: document.getElementById("ptype").value
-  };
-
-  partners.push(partner);
-
-  alert("Partner added ✅");
-
-  loadPartners();
-}
-
-function loadPartners() {
-  const container = document.getElementById("partners");
-
-  let html = "<h2>Partners</h2>";
-
-  partners.forEach(p => {
-    html += `<div>${p.name} - ${p.type}</div>`;
-  });
-
-  container.innerHTML = html;
+  reader.readAsDataURL(img1);
 }
