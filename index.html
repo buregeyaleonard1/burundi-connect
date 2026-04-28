@@ -1,34 +1,42 @@
-
 <!DOCTYPE html>
 <html>
 <head>
   <title>Burundi Connect</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<div class="navbar">
-  <span class="menu-btn" onclick="toggleMenu()">☰</span>
-  <h3>Burundi Connect</h3>
+<div class="header">
+  <span onclick="toggleMenu()">☰</span>
+  <h2>Burundi Connect</h2>
 </div>
 
-<div id="menu" class="menu">
-  <a href="index.html">Dashboard</a>
+<div id="sidebar" class="sidebar">
+  <a href="index.html">Home</a>
   <a href="pages/marketplace.html">Marketplace</a>
-  <a href="pages/products.html">Products</a>
-  <a href="pages/wallet.html">Wallet</a>
-  <a href="pages/team.html">Core Team</a>
-  <a href="pages/partnership.html">Partnership</a>
+  <a href="pages/products.html">Add Product</a>
+  <a href="#">Orders</a>
 </div>
 
 <div class="container">
-  <h1>Welcome</h1>
-  <p>Ecosystem App bcmarket</p>
 
-  <button>Login with Pi</button>
+  <input class="search" placeholder="Search...">
+
+  <div class="grid">
+    <div onclick="go('pages/marketplace.html')" class="card">🛒 Marketplace</div>
+    <div onclick="go('pages/products.html')" class="card">➕ Add</div>
+    <div class="card">📦 Orders</div>
+    <div class="card">💰 Wallet</div>
+    <div class="card">🚚 Delivery</div>
+    <div class="card">🤝 Partnership</div>
+  </div>
+
+  <h3>Products</h3>
+  <div id="products"></div>
+
 </div>
 
 <script src="js/app.js"></script>
-
 </body>
 </html>
