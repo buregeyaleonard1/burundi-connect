@@ -30,3 +30,29 @@ function addProduct(e) {
 
   loadProducts();
 }
+function addPartner(e) {
+  e.preventDefault();
+
+  const partner = {
+    name: document.getElementById("pname").value,
+    type: document.getElementById("ptype").value
+  };
+
+  partners.push(partner);
+
+  alert("Partner added ✅");
+
+  loadPartners();
+}
+
+function loadPartners() {
+  const container = document.getElementById("partners");
+
+  let html = "<h2>Partners</h2>";
+
+  partners.forEach(p => {
+    html += `<div>${p.name} - ${p.type}</div>`;
+  });
+
+  container.innerHTML = html;
+}
