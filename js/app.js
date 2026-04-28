@@ -45,3 +45,51 @@ function addProduct() {
 
   reader.readAsDataURL(img);
 }
+let market = document.getElementById("market");
+
+if (market) {
+
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+
+  function showProducts(list) {
+    market.innerHTML = "";
+
+    list.forEach(p => {
+      market.innerHTML += `
+        <div class="card-product">
+          <img src="${p.image}">
+          <h4>${p.name}</h4>
+          <p class="price">${p.price} BIF</p>
+          <button class="buy-btn">Buy</button>
+        </div>
+      `;
+    });
+  }
+
+  showProducts(products);
+
+  // SEARCH
+  document.getElementById("search").addEventListener("input", function() {
+    let value = this.value.toLowerCase();
+
+    let filtered = products.filter(p =>
+      p.name.toLowerCase().includes(value)
+    );
+
+    showProducts(filtered);
+  });
+
+  // FILTER
+  document.getElementById("filter").addEventListener("change", function() {
+    let cat = this.value;
+
+    let filtered = products.filter(p =>
+      !cat || p.category === cat
+    );
+
+    showProducts(filtered);
+  });
+
+}
+let category = document.getElementById("category").value;
+category: category,
