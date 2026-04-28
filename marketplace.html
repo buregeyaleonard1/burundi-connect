@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../css/style.css">
+
+<div class="container">
+  <h2>Marketplace</h2>
+  <div id="list"></div>
+</div>
+
+<script>
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+let list = document.getElementById("list");
+
+products.forEach(p => {
+  list.innerHTML += `
+    <div style="margin-bottom:20px">
+      <img src="${p.image}" width="100%">
+      <h3>${p.name}</h3>
+      <p>${p.price} Pi</p>
+    </div>
+  `;
+});
+</script>
