@@ -28,3 +28,7 @@ function addProduct() {
 
   reader.readAsDataURL(img1);
 }
+function toggleMenu() {
+  let menu = document.getElementById("sidebar");
+  menu.classList.toggle("active");
+}
