@@ -1,32 +1,31 @@
+<link rel="stylesheet" href="../css/style.css">
+
 <div class="container">
-  <div class="card">
-    <h2>Add Product</h2>
+  <h2>Add Product</h2>
 
-    <form onsubmit="addProduct(event)">
-      <input type="text" id="seller" placeholder="Seller Name" required>
-      <input type="text" id="name" placeholder="Product Name" required>
-      <input type="text" id="price" placeholder="Price" required>
-      <input type="text" id="address" placeholder="Address" required>
+  <input type="text" id="seller" placeholder="Seller Name">
+  <input type="text" id="name" placeholder="Product Name">
+  <input type="number" id="price" placeholder="Price">
+  <input type="text" id="address" placeholder="Address">
 
-      <select id="category">
-        <option>Car</option>
-        <optionBicle</option>
-        <option>Motor</option>
-        <option>Colds</option></option>
-        <option>Chaos</option>
-        <option>Electronic</option>
-        <option>Ibifungurwa</option>
-        <option>Ibitungwa</option>
-      </select>
+  <select id="category">
+    <optionCars</option>
+    <option>Bucslet</option>
+    <option>House</option>
+    <option>Electronic</option>
+<option>Chaos</option>
+<optionColders</option>
+<option>Food</option>
+</select>
 
-      <input type="number" id="stock" placeholder="Stock" required>
+  <input type="number" id="stock" placeholder="Stock">
 
-      <input type="text" id="img1" placeholder="Image 1 URL">
-      <input type="text" id="img2" placeholder="Image 2 URL">
-      <input type="text" id="img3" placeholder="Image 3 URL">
-      <input type="text" id="img4" placeholder="Image 4 URL">
+  <input type="file" id="img1">
+  <input type="file" id="img2">
+  <input type="file" id="img3">
+  <input type="file" id="img4">
 
-      <button type="submit">Add Product</button>
-    </form>
-  </div>
+  <button onclick="addProduct()">Add Product</button>
 </div>
+
+<script src="../js/app.js"></script>
