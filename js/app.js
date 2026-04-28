@@ -17,7 +17,7 @@ if (list) {
       <div class="product">
         <img src="${p.image}">
         <h4>${p.name}</h4>
-        <p>${p.price} BIF</p>
+        <p>${p.price} Pi</p>
       </div>
     `;
   });
