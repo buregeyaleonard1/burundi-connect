@@ -22,3 +22,26 @@ if (list) {
     `;
   });
 }
+function addProduct() {
+  let name = document.getElementById("name").value;
+  let price = document.getElementById("price").value;
+  let img = document.getElementById("img").files[0];
+
+  let reader = new FileReader();
+
+  reader.onload = function(e) {
+    let product = {
+      name: name,
+      price: price,
+      image: e.target.result
+    };
+
+    let data = JSON.parse(localStorage.getItem("products")) || [];
+    data.push(product);
+
+    localStorage.setItem("products", JSON.stringify(data));
+    alert("Saved!");
+  };
+
+  reader.readAsDataURL(img);
+}
