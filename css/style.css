@@ -65,3 +65,35 @@ body {
 .phase.ongoing {
   border-left: 5px solid orange;
 }
+/* PHASE BOX */
+.phase {
+  background: rgba(255,255,255,0.1);
+  padding: 15px;
+  border-radius: 10px;
+  margin: 15px;
+}
+
+/* HEADER INSIDE */
+.phase-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* STATUS BADGE */
+.status {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* IN PROGRESS STYLE */
+.in-progress {
+  border-left: 5px solid orange;
+}
+
+.in-progress .status {
+  background: orange;
+  color: white;
+}
