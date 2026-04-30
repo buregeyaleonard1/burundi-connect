@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Roadmap</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+      background: #f0f2f5;
+    }
+
+    .phase {
+      margin-bottom: 20px;
+    }
+
+    .phase h3 {
+      background: #0f766e;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .task {
+      display: flex;
+      justify-content: space-between;
+      background: white;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 8px;
+    }
+
+    .loading {
+      width: 14px;
+      height: 14px;
+      border: 3px solid #ccc;
+      border-top: 3px solid green;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>📍 Roadmap</h2>
+
+<div id="roadmap"></div>
+
+<script>
+const roadmap = [
+  {
+    phase: "Phase 1",
+    tasks: [
+      { day: 1, title: "Setup Project", status: "pending" },
+      { day: 2, title: "Home UI", status: "pending" }
+    ]
+  },
+  {
+    phase: "Phase 2",
+    tasks: [
+      { day: 16, title: "Login with Pi", status: "pending" }
+    ]
+  },
+  {
+    phase: "Phase 3",
+    tasks: [
+      { day: 31, title: "Pi Payment", status: "pending" }
+    ]
+  }
+];
+
+const container = document.getElementById("roadmap");
+
+roadmap.forEach(p => {
+  const phaseDiv = document.createElement("div");
+  phaseDiv.className = "phase";
+
+  let html = `<h3>${p.phase}</h3>`;
+
+  p.tasks.forEach(task => {
+    let status = task.status === "pending"
+      ? '<span class="loading"></span>'
+      : '✅';
+
+    html += `
+      <div class="task">
+        <span>Day ${task.day} - ${task.title}</span>
+        <span>${status}</span>
+      </div>
+    `;
+  });
+
+  phaseDiv.innerHTML = html;
+  container.appendChild(phaseDiv);
+});
+</script>
+
+</body>
+</html>
