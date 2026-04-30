@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,40 +5,23 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body>
+<body class="roadmap-bg">
 
 <div class="header">
   <span onclick="history.back()">←</span>
   <h3>Roadmap</h3>
 </div>
 
-<div class="container">
-  <div id="roadmap"></div>
+<!-- PHASE 1 -->
+<div class="phase ongoing">
+  <h2>🔄 Phase 1</h2>
+  <p>
+    Setup project<br>
+    Create structure (HTML, CSS, JS)<br>
+    Build menu (☰)<br>
+    Create roadmap page
+  </p>
 </div>
-
-<script>
-fetch("../data/roadmap.json")
-  .then(res => res.json())
-  .then(data => {
-    let container = document.getElementById("roadmap");
-
-    data.phases.forEach(phase => {
-      let html = `
-        <div class="card">
-          <h3>${phase.title} (${phase.days} days)</h3>
-          <ul>
-      `;
-
-      phase.tasks.forEach(task => {
-        html += `<li>${task}</li>`;
-      });
-
-      html += "</ul></div>";
-
-      container.innerHTML += html;
-    });
-  });
-</script>
 
 </body>
 </html>
