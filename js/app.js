@@ -1,4 +1,3 @@
-function markDone(element) {
-  element.classList.remove("loading");
-  element.innerHTML = "✅";
+function toggleMenu() {
+  document.getElementById("sidebar").classList.toggle("active");
 }
