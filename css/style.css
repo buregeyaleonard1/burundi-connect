@@ -11,3 +11,13 @@
 @keyframes spin {
   100% { transform: rotate(360deg); }
 }
+#roadmap .card {
+  background: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+#roadmap ul {
+  padding-left: 20px;
+}
