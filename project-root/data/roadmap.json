@@ -1,10 +1,39 @@
-[
-  { "day": 1, "title": "Setup Project", "status": "pending" },
-  { "day": 2, "title": "Home UI", "status": "pending" },
-  { "day": 3, "title": "Marketplace UI", "status": "pending" }
-]
+
 {
-  "day": 1,
-  "title": "Setup Project",
-  "status": "pending"
+  "phases": [
+    {
+      "title": "Phase 1",
+      "days": 15,
+      "tasks": [
+        "Setup project",
+        "Create homepage",
+        "Add dashboard"
+      ]
+    },
+    {
+      "title": "Phase 2",
+      "days": 10,
+      "tasks": [
+        "Marketplace UI",
+        "Add products system"
+      ]
+    },
+    {
+      "title": "Phase 3",
+      "days": 10,
+      "tasks": [
+        "Partnership system",
+        "Transport integration"
+      ]
+    },
+    {
+      "title": "Final Phase",
+      "days": 6,
+      "tasks": [
+        "Pay with Pi",
+        "Testing",
+        "Launch"
+      ]
+    }
+  ]
 }
