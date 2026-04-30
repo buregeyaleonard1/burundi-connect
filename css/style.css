@@ -1,23 +1,67 @@
-.status.loading {
-  width: 16px;
-  height: 16px;
-  border: 3px solid #ccc;
-  border-top: 3px solid green;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  display: inline-block;
+body {
+  margin: 0;
+  font-family: Arial;
 }
 
-@keyframes spin {
-  100% { transform: rotate(360deg); }
-}
-#roadmap .card {
-  background: white;
+/* HEADER */
+.header {
+  background: #0d1b2a;
+  color: white;
   padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
 
-#roadmap ul {
-  padding-left: 20px;
+.menu-btn {
+  font-size: 22px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  left: -250px;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background: #1b263b;
+  transition: 0.3s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 15px;
+  text-decoration: none;
+}
+
+/* ACTIVE */
+.sidebar.active {
+  left: 0;
+}
+
+/* CONTAINER */
+.container {
+  padding: 20px;
+}
+
+/* ROADMAP BACKGROUND */
+.roadmap-bg {
+  background: linear-gradient(to right, #141e30, #243b55);
+  min-height: 100vh;
+  color: white;
+}
+
+/* PHASE */
+.phase {
+  background: rgba(255,255,255,0.1);
+  padding: 15px;
+  border-radius: 10px;
+  margin: 15px;
+}
+
+.phase.ongoing {
+  border-left: 5px solid orange;
 }
