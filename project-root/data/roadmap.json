@@ -1,1 +1,5 @@
-
+[
+  { "day": 1, "title": "Setup Project", "status": "pending" },
+  { "day": 2, "title": "Home UI", "status": "pending" },
+  { "day": 3, "title": "Marketplace UI", "status": "pending" }
+]
