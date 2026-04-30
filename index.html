@@ -1,42 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Burundi Connect</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Roadmap</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+      background: #f0f2f5;
+    }
+
+    .task {
+      display: flex;
+      justify-content: space-between;
+      background: white;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 10px;
+    }
+
+    .loading {
+      width: 16px;
+      height: 16px;
+      border: 3px solid #ccc;
+      border-top: 3px solid green;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="header">
-  <span onclick="toggleMenu()">☰</span>
-  <h2>Burundi Connect</h2>
-</div>
+<h2>📍 Roadmap</h2>
+<div id="roadmap"></div>
 
-<div id="sidebar" class="sidebar">
-  <a href="index.html">Home</a>
-  <a href="pages/marketplace.html">Marketplace</a>
-  <a href="pages/products.html">Add Product</a>
-  <a href="#">Orders</a>
-</div>
+<script>
+fetch('data/roadmap.json')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("roadmap");
 
-<div class="container">
+    data.forEach(task => {
+      const div = document.createElement("div");
+      div.className = "task";
 
-  <input class="search" placeholder="Search...">
+      let status = "";
 
-  <div class="grid">
-    <div onclick="go('pages/marketplace.html')" class="card">🛒 Marketplace</div>
-    <div onclick="go('pages/products.html')" class="card">➕ Add</div>
-    <div class="card">📦 Orders</div>
-    <div class="card">💰 Wallet</div>
-    <div class="card">🚚 Delivery</div>
-    <div class="card">🤝 Partnership</div>
-  </div>
+      if (task.status === "pending") {
+        status = '<span class="loading"></span>';
+      } else {
+        status = "✅";
+      }
 
-  <h3>Products</h3>
-  <div id="products"></div>
+      div.innerHTML = `
+        <span>Day ${task.day} - ${task.title}</span>
+        <span>${status}</span>
+      `;
 
-</div>
+      container.appendChild(div);
+    });
+  });
+</script>
 
-<script src="js/app.js"></script>
 </body>
 </html>
